@@ -117,6 +117,8 @@ Configuration
 
 You can override the options by passing a suitable options object as arguments to `showMap()`
 
+**Heads Up!** `options` is currently required. You need to pass an empty object for the 3rd argument even you want to override anything.
+
 ```js
 var options = {
   height: 460, // height of the map (width is always full size for now)
@@ -126,9 +128,10 @@ var options = {
   lon: -123.104446  // initial camera position latitude
 };
 
-// @armno - for some reasons, putting options as the 3rd param for showMap() doesn't work for me.
-mapKit.options = options;
-mapKit.showMap(success, error);
+mapKit.showMap(success, error, options);
+
+// without overriding any defaults
+mapKit.showMap(success, error, {});
 ```
 
 Sample App

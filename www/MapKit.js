@@ -26,17 +26,19 @@ var MapKit = function() {
 // Returns default params, overrides if provided with values
 function setDefaults(options) {
     var defaults = {
-        height: 460,
-		diameter: 1000,
-		atBottom: true,
-		lat: 49.281468,
-		lon: -123.104446
+			height: 460,
+			diameter: 1000,
+			atBottom: true,
+			lat: 49.281468,
+			lon: -123.104446
     };
 
     if (options) {
-        for(var i in defaults) 
-            if(typeof options[i] === "undefined") 
-                options[i] = defaults[i];
+      for(var i in defaults) {
+        if (typeof options[i] === "undefined") {
+          options[i] = defaults[i];
+        }
+      }
     }
 
     return options;
@@ -45,7 +47,7 @@ function setDefaults(options) {
 MapKit.prototype = {
 
 	showMap: function(success, error, options) {
-	    options = setDefaults(options);
+    options = setDefaults(options);
 		exec(success, error, 'MapKit', 'showMap', [options]);
 	},
 
