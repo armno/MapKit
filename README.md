@@ -46,9 +46,7 @@ plugin.mapKit.showMap(successCallback, errorCallback, mapOptions);
         console.log('error');
       };
 
-      var options = {};
-
-      plugin.mapKit.showMap(onSuccess, onError, options);
+      plugin.mapKit.showMap(onSuccess, onError);
     });
   </script>
 </body>
@@ -89,11 +87,9 @@ plugin.mapKit.iconColors = {
 
 You can override the options by passing a suitable options object as arguments to `showMap()`
 
-**Heads Up!** `options` is currently required. You need to pass an empty object for the 3rd argument even you want the default options.
-
 ```js
 var options = {
-  height: 460, // height of the map (width is always full size for now)
+  height: 460,      // height of the map (width is always full size for now)
   atBottom: true,   // bottom or top of the webview
   lat: 49.281468,   // initial camera position latitude
   lon: -123.104446  // initial camera position latitude
@@ -102,7 +98,7 @@ var options = {
 mapKit.showMap(success, error, options);
 
 // without overriding any defaults
-mapKit.showMap(success, error, {});
+mapKit.showMap(success, error);
 ```
 
 ## APIs
