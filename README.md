@@ -1,5 +1,6 @@
-MapKit plugin for iOS and Android
-=================================
+# MapKit plugin for iOS and Android
+
+Forked from @imhotep's great [MapKit](https://github.com/imhotep/MapKit) plugin and customized to fit my own needs.
 
 Uses *Apple Maps* on iOS and *Google Maps v2* on Android
 
@@ -13,28 +14,104 @@ Currently only works/tested on Android and iOS. Requires Cordova 3.0+ (will not 
 
 ![Cordova Map 4](http://i.imgur.com/Bfzik6Ml.png)
 
+## Installation
 
-Android specific
-----------------
+**Android specific** - You need a [Google Maps Android v2 API KEY](https://code.google.com/apis/console/) from google and you need to specify it when you install the plugin
 
-You need a [Google Maps Android v2 API KEY](https://code.google.com/apis/console/) from google and you need to specify it when you install the plugin
-
-You can install this plugin with [plugman](https://npmjs.org/package/plugman)
+install with cordova CLI
 
 ```sh
-plugman install --platform android --project android-mapkit-example/ --plugin /path/to/MapKit --variable API_KEY="YOUR_API_KEY_FROM_GOOGLE"
+$ cordova -d plugin add https://github.com/imhotep/MapKit.git --variable API_KEY="YOUR_API_KEY_FROM_GOOGLE"
 ```
 
-or with cordova CLI
+## Usage
 
-```sh
-cordova -d plugin add /path/to/MapKit --variable API_KEY="YOUR_API_KEY_FROM_GOOGLE"
+The plugin exports 1 global `plugin` object with its `mapKit` property. Minimal usage is just to show the map with default `options`.
+
+```js
+plugin.mapKit.showMap(successCallback, errorCallback, mapOptions);
 ```
 
-(/path/to/MapKit could be the git repository https://github.com/imhotep/MapKit)
+```html
+<body>
+  <script src="cordova.js"></script>
+  <script>
+    document.addEventListener('deviceready', function() {
 
-Sample code
------------
+      var onSuccess = function() {
+        console.log('success');
+      };
+
+      var onError = function() {
+        console.log('error');
+      };
+
+      var options = {};
+
+      plugin.mapKit.showMap(onSuccess, onError, options);
+    });
+  </script>
+</body>
+```
+
+## Constants and Options
+
+map types
+
+```js
+plugin.mapKit.mapType = {
+  MAP_TYPE_NONE: 0, //No base map tiles.
+  MAP_TYPE_NORMAL: 1, //Basic maps.
+  MAP_TYPE_SATELLITE: 2, //Satellite maps with no labels.
+  MAP_TYPE_TERRAIN: 3, //Terrain maps.
+  MAP_TYPE_HYBRID: 4 //Satellite maps with a transparent layer of major streets.
+}
+```
+
+icon colors
+
+```js
+plugin.mapKit.iconColors = {
+  HUE_RED: 0.0,
+  HUE_ORANGE: 30.0,
+  HUE_YELLOW: 60.0,
+  HUE_GREEN: 120.0,
+  HUE_CYAN: 180.0,
+  HUE_AZURE: 210.0,
+  HUE_BLUE: 240.0,
+  HUE_VIOLET: 270.0,
+  HUE_MAGENTA: 300.0,
+  HUE_ROSE: 330.0
+};
+```
+
+### Options
+
+You can override the options by passing a suitable options object as arguments to `showMap()`
+
+**Heads Up!** `options` is currently required. You need to pass an empty object for the 3rd argument even you want the default options.
+
+```js
+var options = {
+  height: 460, // height of the map (width is always full size for now)
+  atBottom: true,   // bottom or top of the webview
+  lat: 49.281468,   // initial camera position latitude
+  lon: -123.104446  // initial camera position latitude
+};
+
+mapKit.showMap(success, error, options);
+
+// without overriding any defaults
+mapKit.showMap(success, error, {});
+```
+
+## APIs
+
+- `showMap(success, error, options)`
+- `addMapPins(pins, success, error)`
+- `clearMapPins(success, error)`
+- `changeMapType(mapType, success, error)`
+- `hideMap(success, error)`
 
 ```js
 var app = {
@@ -112,28 +189,6 @@ var app = {
 }
 ```
 
-Configuration
--------------
-
-You can override the options by passing a suitable options object as arguments to `showMap()`
-
-**Heads Up!** `options` is currently required. You need to pass an empty object for the 3rd argument even you want to override anything.
-
-```js
-var options = {
-  height: 460, // height of the map (width is always full size for now)
-  diameter: 1000,   // unused for now
-  atBottom: true,   // bottom or top of the webview
-  lat: 49.281468,   // initial camera position latitude
-  lon: -123.104446  // initial camera position latitude
-};
-
-mapKit.showMap(success, error, options);
-
-// without overriding any defaults
-mapKit.showMap(success, error, {});
-```
-
 Sample App
 ----------
 
@@ -146,8 +201,7 @@ Info bubbles: Simple info bubbles supported (title, snippet and custom icons for
 
 ## Wishlist
 
-- [ ] customizable width, height, and map positions
-- [ ] zoom level in `options`
+see [issues](https://github.com/armno/MapKit/issues).
 
 License
 -------
