@@ -32,18 +32,43 @@
 
 - (void)createViewWithOptions:(NSDictionary *)options {
 
-    //This is the Designated Initializer
+  //This is the Designated Initializer
 
-    // defaults
-  float height = ([options objectForKey:@"height"]) ? [[options objectForKey:@"height"] floatValue] : self.webView.bounds.size.height/2;
-  float width = ([options objectForKey:@"width"]) ? [[options objectForKey:@"width"] floatValue] : self.webView.bounds.size.width;
-  float x = self.webView.bounds.origin.x;
+  // defaults
+  // clarity, ftw
+  float height = self.webView.bounds.size.height;
+  if ([options objectForKey:@"height"])
+  {
+    height = [[options objectForKey:@"height"] floatValue];
+  }
+
+  float width = self.webView.bounds.size.width;
+  if ([options objectForKey:@"width"])
+  {
+    width = [[options objectForKey:@"width"] floatValue];
+  }
+
   float y = self.webView.bounds.origin.y;
-  // BOOL atBottom = ([options objectForKey:@"atBottom"]) ? [[options objectForKey:@"atBottom"] boolValue] : NO;
+  if ([options objectForKey:@"top"])
+  {
+    y = [[options objectForKey:@"top"] floatValue];
+  }
 
-  // if(atBottom) {
-    // y += self.webView.bounds.size.height - height;
-  // }
+  float x = self.webView.bounds.origin.x;
+  if ([options objectForKey:@"left"])
+  {
+    x = [[options objectForKey:@"left"] floatValue];
+  }
+
+  float bottom = -1;
+  if ([options objectForKey:@"bottom"])
+  {
+    bottom = [[options objectForKey:@"bottom"] floatValue];
+  }
+
+  if (bottom != -1) {
+    y += self.webView.bounds.size.height - height - bottom;
+  }
 
   self.childView = [[UIView alloc] initWithFrame:CGRectMake(x,y,width,height)];
   self.mapView = [[MKMapView alloc] initWithFrame:CGRectMake(self.childView.bounds.origin.x, self.childView.bounds.origin.x, self.childView.bounds.size.width, self.childView.bounds.size.height)];

@@ -1,6 +1,6 @@
 # MapKit plugin for iOS and Android
 
-> Forked from @imhotep's great [MapKit](https://github.com/imhotep/MapKit) plugin and customized to fit my own needs. I'm primarily focusing on iOS but also expecting the same functionality on Android too.
+> Forked from @imhotep's great [MapKit](https://github.com/imhotep/MapKit) plugin and customized to fit my own needs (and so, opinionated). I'm primarily focusing on iOS but also expecting the same functionality on Android too.
 
 Uses *Apple Maps* on iOS and *Google Maps v2* on Android
 
@@ -76,6 +76,9 @@ mapKit.showMap(success, error);
 | -------- | ---- | ------- | -------- | ----------- |
 | `height` | `number` | 50% of viewport | false | map's height |
 | `width`  | `number` | 100% of viewport | false | map's width |
+| `top`    | `number` | 0 | false | top offset for the map. do not use with `bottom` |
+| `bottom`    | `number` | undefined | false | bottom offset for the map. do not use with `top` property |
+| `left`    | `number` | 0 | false | left offset for the map |
 | `lat`    | `number` | 49.281468 | false | latitude of map's center |
 | `lon`    | `number` | -123.104446 | false | longitude of map's center |
 

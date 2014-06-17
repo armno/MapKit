@@ -28,7 +28,9 @@ function setDefaults(options) {
     var defaults = {
       diameter: 1000,
       lat: 49.281468,
-      lon: -123.104446
+      lon: -123.104446,
+      left: 0,
+      top: 0
     };
 
     // return default values if no option passed
