@@ -27,7 +27,6 @@ var MapKit = function() {
 function setDefaults(options) {
     var defaults = {
       diameter: 1000,
-      atBottom: true,
       lat: 49.281468,
       lon: -123.104446
     };

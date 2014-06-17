@@ -39,11 +39,11 @@
   float width = ([options objectForKey:@"width"]) ? [[options objectForKey:@"width"] floatValue] : self.webView.bounds.size.width;
   float x = self.webView.bounds.origin.x;
   float y = self.webView.bounds.origin.y;
-  BOOL atBottom = ([options objectForKey:@"atBottom"]) ? [[options objectForKey:@"atBottom"] boolValue] : NO;
+  // BOOL atBottom = ([options objectForKey:@"atBottom"]) ? [[options objectForKey:@"atBottom"] boolValue] : NO;
 
-  if(atBottom) {
-    y += self.webView.bounds.size.height - height;
-  }
+  // if(atBottom) {
+    // y += self.webView.bounds.size.height - height;
+  // }
 
   self.childView = [[UIView alloc] initWithFrame:CGRectMake(x,y,width,height)];
   self.mapView = [[MKMapView alloc] initWithFrame:CGRectMake(self.childView.bounds.origin.x, self.childView.bounds.origin.x, self.childView.bounds.size.width, self.childView.bounds.size.height)];

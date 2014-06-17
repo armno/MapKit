@@ -62,7 +62,6 @@ You can override the options by passing a suitable options object as arguments t
 var options = {
   height: 460,      // height of the map, in pixel
   width: 200,       // width of the map, in pixel
-  atBottom: true,   // bottom or top of the webview
   lat: 49.281468,   // initial camera position latitude
   lon: -123.104446  // initial camera position latitude
 };
@@ -77,7 +76,6 @@ mapKit.showMap(success, error);
 | -------- | ---- | ------- | -------- | ----------- |
 | `height` | `number` | 50% of viewport | false | map's height |
 | `width`  | `number` | 100% of viewport | false | map's width |
-| `atBottom` | `boolean` | true | false | bottom or top of the viewport |
 | `lat`    | `number` | 49.281468 | false | latitude of map's center |
 | `lon`    | `number` | -123.104446 | false | longitude of map's center |
 
