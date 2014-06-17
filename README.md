@@ -23,7 +23,7 @@ Currently only works/tested on Android and iOS. Requires Cordova 3.0+ (will not 
 install with cordova CLI
 
 ```sh
-$ cordova -d plugin add https://github.com/imhotep/MapKit.git --variable API_KEY="YOUR_API_KEY_FROM_GOOGLE"
+$ cordova -d plugin add https://github.com/armno/MapKit.git --variable API_KEY="YOUR_API_KEY_FROM_GOOGLE"
 ```
 
 ## Usage
@@ -196,16 +196,6 @@ var app = {
   }
 }
 ```
-
-Sample App
-----------
-
-Checkout the sample/ application as a boilerplate!
-
-Missing features
-----------------
-
-Info bubbles: Simple info bubbles supported (title, snippet and custom icons for markers). Custom info bubbles not supported (i.e HTML bubbles etc..).
 
 ## Wishlist
 
