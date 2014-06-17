@@ -1,6 +1,6 @@
 # MapKit plugin for iOS and Android
 
-Forked from @imhotep's great [MapKit](https://github.com/imhotep/MapKit) plugin and customized to fit my own needs.
+> Forked from @imhotep's great [MapKit](https://github.com/imhotep/MapKit) plugin and customized to fit my own needs. I'm primarily focusing on iOS but also expecting the same functionality on Android too.
 
 Uses *Apple Maps* on iOS and *Google Maps v2* on Android
 
@@ -16,7 +16,9 @@ Currently only works/tested on Android and iOS. Requires Cordova 3.0+ (will not 
 
 ## Installation
 
-**Android specific** - You need a [Google Maps Android v2 API KEY](https://code.google.com/apis/console/) from google and you need to specify it when you install the plugin
+**Android specific** - You need a [Google Maps Android v2 API KEY](https://code.google.com/apis/console/) from google and you need to specify it when you install the plugin.
+
+`API_KEY` is optional for iOS.
 
 install with cordova CLI
 
@@ -26,7 +28,7 @@ $ cordova -d plugin add https://github.com/imhotep/MapKit.git --variable API_KEY
 
 ## Usage
 
-The plugin exports 1 global `plugin` object with its `mapKit` property. Minimal usage is just to show the map with default `options`.
+The plugin exports 1 global `plugin` object with its `mapKit` property. Minimal usage is just to show the map with default `mapOptions`.
 
 ```js
 plugin.mapKit.showMap(successCallback, errorCallback, mapOptions);
@@ -52,7 +54,34 @@ plugin.mapKit.showMap(successCallback, errorCallback, mapOptions);
 </body>
 ```
 
-## Constants and Options
+## Options
+
+You can override the options by passing a suitable options object as arguments to `showMap()`
+
+```js
+var options = {
+  height: 460,      // height of the map, in pixel
+  width: 200,       // width of the map, in pixel
+  atBottom: true,   // bottom or top of the webview
+  lat: 49.281468,   // initial camera position latitude
+  lon: -123.104446  // initial camera position latitude
+};
+
+mapKit.showMap(success, error, options);
+
+// without overriding any defaults
+mapKit.showMap(success, error);
+```
+
+| property | type | default value | required | description |
+| -------- | ---- | ------- | -------- | ----------- |
+| `height` | `number` | 50% of viewport | false | map's height |
+| `width`  | `number` | 100% of viewport | false | map's width |
+| `atBottom` | `boolean` | true | false | bottom or top of the viewport |
+| `lat`    | `number` | 49.281468 | false | latitude of map's center |
+| `lon`    | `number` | -123.104446 | false | longitude of map's center |
+
+## Constants
 
 map types
 
@@ -81,24 +110,6 @@ plugin.mapKit.iconColors = {
   HUE_MAGENTA: 300.0,
   HUE_ROSE: 330.0
 };
-```
-
-### Options
-
-You can override the options by passing a suitable options object as arguments to `showMap()`
-
-```js
-var options = {
-  height: 460,      // height of the map (width is always full size for now)
-  atBottom: true,   // bottom or top of the webview
-  lat: 49.281468,   // initial camera position latitude
-  lon: -123.104446  // initial camera position latitude
-};
-
-mapKit.showMap(success, error, options);
-
-// without overriding any defaults
-mapKit.showMap(success, error);
 ```
 
 ## APIs

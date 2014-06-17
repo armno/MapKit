@@ -26,7 +26,6 @@ var MapKit = function() {
 // Returns default params, overrides if provided with values
 function setDefaults(options) {
     var defaults = {
-      height: 460,
       diameter: 1000,
       atBottom: true,
       lat: 49.281468,
