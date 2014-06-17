@@ -74,7 +74,7 @@ mapKit.showMap(success, error);
 
 | property | type | default value | required | description |
 | -------- | ---- | ------- | -------- | ----------- |
-| `height` | `number` | 50% of viewport | false | map's height |
+| `height` | `number` | 100% of viewport | false | map's height |
 | `width`  | `number` | 100% of viewport | false | map's width |
 | `top`    | `number` | 0 | false | top offset for the map. do not use with `bottom` |
 | `bottom`    | `number` | undefined | false | bottom offset for the map. do not use with `top` property |
