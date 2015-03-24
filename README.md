@@ -1,3 +1,9 @@
+# No longer maintained!
+
+Check out [wf9a5m75/phonegap-googlemaps-plugin](https://github.com/wf9a5m75/phonegap-googlemaps-plugin) for native map support in Cordova or [angular-ui/angular-google-maps](https://github.com/angular-ui/angular-google-maps) if you are using Cordova + Angular + Google Maps JS SDK like me.
+
+-----
+
 # MapKit plugin for iOS and Android
 
 > Forked from @imhotep's great [MapKit](https://github.com/imhotep/MapKit) plugin and customized to fit my own needs (and so, opinionated). I'm primarily focusing on iOS but also expecting the same functionality on Android too.
